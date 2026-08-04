@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Portable Agent Skill Evaluation Case",
+  "type": "object",
+  "required": ["id", "category", "prompt", "expected_activation", "checks"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "category": { "enum": ["discovery", "process", "outcome", "safety", "efficiency", "recovery"] },
+    "prompt": { "type": "string", "minLength": 1 },
+    "expected_activation": { "enum": ["activate", "do-not-activate", "clarify"] },
+    "fixture": { "type": ["string", "null"] },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "criterion"],
+        "properties": {
+          "type": { "enum": ["deterministic", "rubric"] },
+          "criterion": { "type": "string", "minLength": 1 },
+          "weight": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

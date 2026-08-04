@@ -1,0 +1,35 @@
+standard: portable-agent-skills/0.1
+version: 0.1.0
+contract:
+  inputs:
+    - Authorized root directory
+    - One or more Markdown files within the authorized root
+  outputs:
+    - Link-integrity report
+  preconditions: []
+  invariants:
+    - Do not modify files without explicit authorization
+    - Do not fetch remote URLs
+  success_criteria:
+    - Every supported inline link is classified exactly once
+    - Every missing or outside-root target is reported with its source
+  failure_modes:
+    - Stop and report unreadable input files
+capabilities:
+  tools:
+    - filesystem-read
+    - python3
+  filesystem: read
+  network: none
+  side_effects: []
+safety:
+  confirmation_gates: []
+  sensitive_data: Treat file contents as private unless the user authorizes sharing
+  untrusted_content: isolate
+compatibility:
+  hosts: []
+  runtimes:
+    - POSIX-like filesystem
+  dependencies: []
+evaluation:
+  suite: evals/
