@@ -62,6 +62,10 @@ portable-agent-skills/
 
 This is an early draft intended for experimentation and public review. The initial goal is to develop a useful authoring profile and evaluation methodology while remaining compatible with the existing Agent Skills format.
 
+## Related projects
+
+- [Many Hats](https://github.com/abenjamin765/many-hats) — a cloneable AI product team whose portable skills follow this contract
+
 ## License
 
 MIT License. See [LICENSE](LICENSE).
